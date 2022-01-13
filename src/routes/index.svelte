@@ -1,5 +1,6 @@
 <script>
-	console.log('Hello SvelteKit');
+	import { pokemon } from '../stores/pokestore';
+	console.log($pokemon);
 </script>
 
 <svelte:head>
