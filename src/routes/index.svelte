@@ -8,3 +8,7 @@
 </svelte:head>
 
 <h1>SvelteKit Pokedex</h1>
+
+{#each $pokemon as poke}
+	<p>{poke.name}</p>
+{/each}
