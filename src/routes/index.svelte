@@ -1,10 +1,10 @@
 <script>
 	import PokemanCard from '../components/pokemanCard.svelte';
-	import { pokemon } from '../stores/pokestore';
-	console.log($pokemon);
+	import { pokemon, fetchPokemon } from '../stores/pokestore';
 
 	let searchTerm = '';
 	let filteredPokemon = [];
+
 	$: {
 		if (searchTerm) {
 			filteredPokemon = $pokemon.filter((pokeman) =>
@@ -14,6 +14,8 @@
 			filteredPokemon = [...$pokemon];
 		}
 	}
+
+	fetchPokemon();
 </script>
 
 <svelte:head>

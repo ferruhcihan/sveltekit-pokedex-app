@@ -1,8 +1,10 @@
 import { writable } from 'svelte/store';
 
 export const pokemon = writable([]);
+let loaded = false;
 
-const fetchPokemon = async () => {
+export const fetchPokemon = async () => {
+	if (loaded) return;
 	const url = `https://pokeapi.co/api/v2/pokemon?limit=150`;
 	const res = await fetch(url);
 	const data = await res.json();
@@ -14,6 +16,5 @@ const fetchPokemon = async () => {
 		}.png`
 	}));
 	pokemon.set(loadedPokemon);
+	loaded = true;
 };
-
-fetchPokemon();
